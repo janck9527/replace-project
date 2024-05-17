@@ -21,10 +21,11 @@ public class StartMain {
     public static void main(String[] args) {
         TraceWatch traceWatch = new TraceWatch();
         traceWatch.start("host文件时间");
+//        Map<String, String> stringStringMap = ScanWebUtils.analysisData(Arrays.asList("monica.im"));
         Map<String, String> stringStringMap = ScanWebUtils.analysisData(Arrays.asList(Config.HOST_LIST));
         traceWatch.stop();
         System.out.println(Config.HOST_PREFIX);
-        stringStringMap.forEach((key, value) -> System.out.println(key + " " + value));
+        stringStringMap.forEach((key, value) -> System.out.println(value+" "+key ));
         System.out.println(Config.HOST_SUFFIX);
         System.out.println("耗时："+JSON.toJSONString(traceWatch.getTaskMap().get("host文件时间").get(0).getData()));
     }
